@@ -1,8 +1,19 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\LoginController;
 
-// This single route serves your React app (or any page)
-Route::get('{any}', function () {
-    return view('app'); // → points to resources/views/app.blade.php
-})->where('any', '.*');
+// Public pages
+Route::get('/', function () {
+    return view('app');
+});
+
+// Login routes
+Route::get('/login', [LoginController::class, 'show'])->name('login');
+Route::post('/login', [LoginController::class, 'login']);
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+// Protected route example (you will create dashboard later)
+Route::get('/dashboard', function () {
+    return view('auth.dashboard');
+})->middleware('auth');

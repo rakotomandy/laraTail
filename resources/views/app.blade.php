@@ -20,8 +20,14 @@
 
     <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
         <div class="bg-white py-8 px-4 shadow-2xl sm:rounded-lg sm:px-10 border border-gray-200">
-            <form class="space-y-6" action="#" method="POST">
+            <form class="space-y-6" action="{{ route('login') }}" method="POST">
                 @csrf
+
+                @if ($errors->any())
+                    <div class="bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded mb-4">
+                        {{ $errors->first() }}
+                    </div>
+                @endif
 
                 <!-- Email Field -->
                 <div>
