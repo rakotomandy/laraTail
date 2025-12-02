@@ -70,3 +70,7 @@ git push -u origin main
 
 # Done! Your project is now fully on GitHub
 ```
+FROM NOW ON, you only do these commands:
+git add .
+git commit -m "Your message"
+git push
